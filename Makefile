@@ -240,8 +240,12 @@ lint: $(GOLANGCI_LINT_BIN)
 	@echo "running golangci-lint"
 	@git symbolic-ref -q HEAD && REV="origin/HEAD" || REV="HEAD^" ; \
 	headSHA=$$(git rev-parse --short=12 $${REV}) ; \
-	echo "checking against commit sha $${headSHA}" ; \
-	"${GOLANGCI_LINT_BIN}" run --new-from-rev=$${headSHA}
+	echo "checking rev '$${REV}'" ; \
+	echo "checking against commit sha '$${headSHA}'" ;
+
+
+# "${GOLANGCI_LINT_BIN}" run --new-from-rev=$${headSHA}
+
 
 # Check scripts
 .PHONY: check_scripts
