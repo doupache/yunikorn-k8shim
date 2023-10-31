@@ -14,8 +14,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-      - name: Fetch origin data
-        run: git fetch origin +refs/heads/*:refs/remotes/origin/*
+      - name: Fetch all references
+  run: git fetch --depth=1 origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*'
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
