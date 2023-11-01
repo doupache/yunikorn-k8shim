@@ -238,8 +238,7 @@ $(SPARK_SUBMIT_CMD):
 .PHONY: lint
 lint: $(GOLANGCI_LINT_BIN)
 	@echo "running golangci-lint"
-	@git symbolic-ref -q HEAD && REV="origin/HEAD" || REV="HEAD^" ; \
-	git show-ref \
+	@git symbolic-ref -q HEAD && REV="HEAD^" || REV="origin/HEAD" ; \
 	headSHA=$$(git rev-parse --short=12 $${REV}) ; \
 	echo "checking rev '$${REV}'" ; \
 	echo "checking against commit sha '$${headSHA}'" ;
